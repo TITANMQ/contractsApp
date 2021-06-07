@@ -12,6 +12,12 @@ class User(models.Model):
     language = models.CharField(max_length=30)
     rating = models.IntegerField()
 
+class Customer(models.Model, User):
+    pass
+
+class Driver(models.Model, User):
+    vehicle = models.CharField(Vehicle)
+
 class Location(models.Model):
     location_id = models.IntegerField(primary_key=True)
     latitude = models.DecimalField(max_digits=15)
