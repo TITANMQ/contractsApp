@@ -16,3 +16,23 @@ class Location(models.Model):
     location_id = models.IntegerField(primary_key=True)
     latitude = models.DecimalField(max_digits=15)
     longitude = models.DecimalField(max_digits=15)
+
+class CarChoice(Enum):
+    TUK = "TUK-TUK"
+    MINI = "MINI-VAN"
+    SUV = "SPORT-UTILITY VEHICLE"
+    CONV = "CONVERTIBLE"
+    COUP = "COUPE"
+    # LUX cars are for future features.
+    LUX_SUV = "LUXURY SPORT-UTILITY VEHICLE"
+    LUX_CONV = "LUXURY CONVERTIBLE"
+    LUX_COUP = "LUXURY COUPE"
+
+class Vehicle(models.Model):
+    vehicle_id = models.IntegerField(primary_key=True)
+    type = models.CharField(
+        max_length=10,
+        choices=[(tag, tag.value) for tag in CarChoice]
+    )
+    capacity = models.IntegerField(default=0)
+    license_plate_number = models.CharField(max_length=11)
