@@ -12,3 +12,7 @@ class User(models.Model):
     language = models.CharField(max_length=30)
     rating = models.IntegerField()
 
+class Location(models.Model):
+    location_id = models.IntegerField(primary_key=True)
+    latitude = models.DecimalField(max_digits=15)
+    longitude = models.DecimalField(max_digits=15)
