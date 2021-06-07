@@ -1,5 +1,4 @@
 from enum import Enum
-
 from django.db import models
 
 # Create your models here.
@@ -34,13 +33,13 @@ class Vehicle(models.Model):
     capacity = models.IntegerField(default=0)
     license_plate_number = models.CharField(max_length=11)
 
-class Customer(models.Model, User):
-    pass
+# class Customer(models.Model, User):
+#     pass
 
-class Driver(models.Model, User):
-    vehicle = models.CharField(Vehicle)
+# class Driver(models.Model, User):
+#     vehicle = models.CharField(Vehicle)
 
 class Location(models.Model):
     location_id = models.IntegerField(primary_key=True)
-    latitude = models.DecimalField(max_digits=15)
-    longitude = models.DecimalField(max_digits=15)
+    latitude = models.DecimalField(decimal_places=15, max_digits=15)
+    longitude = models.DecimalField(decimal_places=15, max_digits=15)
