@@ -1,0 +1,61 @@
+.main-content{
+    background-color: blue;
+    width:100%; 
+}
+
+.side-nav-div{
+    border-radius: 5px;
+    width: 13%;
+    margin-left: 0;
+    height: 100%;
+    padding: 10px;
+    background-color: green;
+    position: fixed;
+    
+}
+
+.inner-main{
+    border-radius: 5px;
+    width: 87%;
+    background-color: pink;
+    float: right;
+    padding: 10px;
+}
+
+.inner-main-left{
+    border-radius: 5px;
+    width: 50%;
+    background-color: aqua;
+    padding: 10px;
+    float: left;
+}
+
+.inner-main-left-curr-book{
+    border-radius: 5px;
+    width: 100%;
+    background-color: yellow;
+    padding: 5px;
+}
+
+.inner-main-left-past-book{
+    border-radius: 5px;
+    width: 100%;
+    background-color: yellowgreen;
+    padding: 5px;
+}
+
+.inner-main-right{
+    border-radius: 5px;
+    width: 50%;
+    background-color: goldenrod;
+    padding: 10px;
+    
+    float: right;
+}
+
+.inner-main-right-noti{
+    border-radius: 5px;
+    width: 100%;
+    background-color: chocolate;
+    padding: 5px;
+}
