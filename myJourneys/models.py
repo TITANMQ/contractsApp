@@ -44,17 +44,3 @@ class Location(models.Model):
     location_id = models.IntegerField(primary_key=True)
     latitude = models.DecimalField(max_digits=15)
     longitude = models.DecimalField(max_digits=15)
-
-class Bookings(models.Model):
-    booking_id = models.IntegerField(primary_key=True)
-    pick_up_loc = models.ForeignKey(Location, on_delete=models.CASCADE)
-    drop_off_loc = models.ForeignKey(Location, on_delete=models.CASCADE)
-    date = models.DateField()
-    time = models.TimeField()
-    assigned_driver= models.ForeignKey(Driver)
-    customer = models.ForeignKey(Customer)
-    num_of_people = models.IntegerField(max_length=10)
-    fee = models.DecimalField(max_digits=15)
-    notes = models.CharField(max_length=100)
-    status = models.CharField(max_length=100)
-
