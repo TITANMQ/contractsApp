@@ -34,25 +34,25 @@ class Vehicle(models.Model):
     capacity = models.IntegerField(default=0)
     license_plate_number = models.CharField(max_length=11)
 
-class Customer(models.Model, User):
+class Customer(User):
     pass
 
-class Driver(models.Model, User):
-    vehicle = models.CharField(Vehicle)
+class Driver(User):
+    vehicle = models.CharField(Vehicle, max_length=100)
 
 class Location(models.Model):
     location_id = models.IntegerField(primary_key=True)
-    latitude = models.DecimalField(max_digits=15)
-    longitude = models.DecimalField(max_digits=15)
+    latitude = models.DecimalField(decimal_places=15, max_digits=15)
+    longitude = models.DecimalField(decimal_places=15,max_digits=15)
 
 class Bookings(models.Model):
     booking_id = models.IntegerField(primary_key=True)
-    pick_up_loc = models.ForeignKey(Location, on_delete=models.CASCADE)
-    drop_off_loc = models.ForeignKey(Location, on_delete=models.CASCADE)
+    pick_up_loc = models.ForeignKey(Location, related_name='pu_loc', on_delete=models.CASCADE)
+    drop_off_loc = models.ForeignKey(Location, related_name='do_loc', on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
-    assigned_driver = models.ForeignKey(Driver)
-    customer = models.ForeignKey(Customer)
-    fee = models.DecimalField(max_digits=15)
+    assigned_driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    fee = models.DecimalField(decimal_places=2, max_digits=6)
     notes = models.CharField(max_length=100)
     status = models.CharField(max_length=30)
