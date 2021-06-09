@@ -1,0 +1,87 @@
+/* ---------------- register css ---------------*/
+
+.main-content{
+    background-color: #f8f9fa;
+    width:100%;
+}
+
+.side-nav-div{
+    border-radius: 5px;
+    width: 13%;
+    margin-left: 0;
+    height: 100%;
+    padding: 10px;
+    position: fixed;
+
+}
+
+.inner-main{
+    border-radius: 5px;
+    width: 87%;
+    background-color: #c7cbff;
+    float: right;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-style: solid;
+    border-color: #f8f9fa;
+
+}
+
+.inner-main-account{
+    border-radius: 5px;
+    width: 50%;
+    background-color: #e6e7ff;
+    padding: 10px;
+    border-style: solid;
+    border-color: #f8f9fa;
+
+
+}
+
+body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+ }
+  
+  .form-signin {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    margin: auto;
+  }
+  
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+  
+  .form-signin .form-floating:focus-within {
+    z-index: 2;
+  }
+
+  .save_btn{
+      background-color: #c7cbff;
+      color: #ffffff;
+  }
+  
+  /* .form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  } */

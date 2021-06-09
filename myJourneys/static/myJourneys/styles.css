@@ -11,7 +11,7 @@
     padding: 10px;
     background-color: green;
     position: fixed;
-    
+
 }
 
 .inner-main{
@@ -59,3 +59,9 @@
     background-color: chocolate;
     padding: 5px;
 }
+
+.inner-main-account{
+    text-align: center;
+
+}
+

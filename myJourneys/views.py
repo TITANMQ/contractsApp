@@ -27,6 +27,20 @@ def dashboard(request):
     }
     return render(request, 'dashboard.html', context=context)
 
+def account(request):
+    context = {}
+
+    return render(request, 'account.html', context=context)
+
+def register(request):
+    context = {}
+
+    return render(request, 'register.html', context=context)
+
+def booking(request):
+    context = {}
+
+    return render(request, 'booking.html', context=context)
 
 def index_redirect(request):
     return HttpResponsePermanentRedirect('/myJourneys/')
