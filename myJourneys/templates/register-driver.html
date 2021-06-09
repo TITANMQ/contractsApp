@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Add a vehicle</title>
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.0/examples/sign-in/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+
+    <!-- custom css -->
+    {% load static %}
+    <link href="{% static 'myJourneys/register.css' %}" rel="stylesheet" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="text-center">
+
+    <main class="form-register">
+        
+
+        <form action='/myJourneys/register' method="POST">
+
+            {% csrf_token %}
+          
+        
+            <img class="mb-4" src="{% static 'myJourneys/suber-logo.png' %}" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Add a vehicle</h1>
+
+            <div class="row g-2">
+              <div class="form-floating">
+                  
+                <select class="form-select" id="vehicle_type" required>
+                  <option selected value="TUK-TUK">Tuk-tuk</option>
+                  <option value="MINI-VAN">Mini van</option>
+                  <option value="SPORT-UTILITY VEHICLE">Sport-Utility Vehicle (SUV)</option>
+                  <option value="CONVERTIBLE">Convertible</option>
+                  <option value="COUPE">Coupe</option>
+              
+                </select>
+                <label for="vehicle_type">Vehicle type</label>
+              </div>
+  
+              <div class="form-floating">
+            
+                <input type="number" class="form-control" id="capacity" placeholder="Capacity" required>
+                <label for="capacity">Capacity</label>
+              </div>
+        
+              <div class="form-floating">
+  
+                <input type="text" class="form-control" id="license_plate" placeholder="License plate code" required>
+                <label for="license_plate">License Plate Code</label>
+            
+              </div>
+  
+              <button class="w-100 btn btn-lg register_btn" type="Add" id="register">Add vehicle</button>
+            </div>
+
+          </div>
+              
+        </form>
+
+    </main>
+  </body>
+</html>
