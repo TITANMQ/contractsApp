@@ -1,68 +1,162 @@
-.main-content{
-    background-color: blue;
-    width:100%; 
+html *
+{
+   color: #000 !important;
+   font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; !important;
+}
+body {
+   background-color: #f8f9fa; #light grey
 }
 
-.side-nav-div{
-    border-radius: 5px;
-    width: 13%;
-    margin-left: 0;
-    height: 100%;
-    padding: 10px;
-    background-color: green;
-    position: fixed;
-
+.main-content{
+    background-color: #c7cbff;
+    width:100%; 
 }
 
 .inner-main{
     border-radius: 5px;
-    width: 87%;
-    background-color: pink;
+    width: 100%;
+    background-color: #c7cbff;
     float: right;
     padding: 10px;
 }
 
 .inner-main-left{
     border-radius: 5px;
-    width: 50%;
-    background-color: aqua;
+    width: 49.65%;
+    background-color: #e6e7ff;
     padding: 10px;
     float: left;
+
 }
 
 .inner-main-left-curr-book{
     border-radius: 5px;
     width: 100%;
-    background-color: yellow;
+    background-color: #c7cbff;
     padding: 5px;
+    padding_bottom: 30px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #FFFFFF; #white
 }
 
 .inner-main-left-past-book{
     border-radius: 5px;
     width: 100%;
-    background-color: yellowgreen;
+    background-color: #c7cbff;
     padding: 5px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #FFFFFF; #white
 }
 
 .inner-main-right{
     border-radius: 5px;
-    width: 50%;
-    background-color: goldenrod;
+    width: 49.65%;
+    background-color: #e6e7ff;
     padding: 10px;
-    
     float: right;
 }
 
 .inner-main-right-noti{
     border-radius: 5px;
     width: 100%;
-    background-color: chocolate;
+    background-color: #c7cbff;
     padding: 5px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #FFFFFF; #white
+}
 
+.header-main{
+    background-color: #e6e7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
+
+.header-main-content{
+    background-color: #c7cbff;
+    position: absolute;
+    top: 50%, left: 50%;
+    width: 80%;
+    height: 26vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    margin-bottom: -4vh;
+}
+
+.index-main{
+    background-color: #e6e7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.index-main-content{
+    background-color: #c7cbff;
+    position: absolute;
+    top: 50%, left: 50%;
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.dashboard-main-content{
+    background-color: #c7cbff;
+    position: absolute;
+    top: 50%, left: 50%;
+    width: 80%;
+    height: 100vh;
+}
+
+
+.responsive{
+    width: 55vh;
+    height: auto;
+    padding: 2vh;
+}
+
+.responsive-logo{
+    width: 25vh;
+    height: auto;
+    padding: 2vh;
+}
+
+.btn {
+    color: #5e17eb !important;
+    font-size: 3vh;
+    border-radius: 5vh;
+    cursor: pointer;
+}
+
+/* dark purple */
+.enter {
+    color: #5e17eb;
+}
+
+.enter:hover {
+    background-color: #e6e7ff;
+    color: white;
+}
+
+.enter:active {
+    background-color: #5e17eb;
+}
+
+.enter a:link {
+  text-decoration: none;
 }
 
 .inner-main-account{
     text-align: center;
-
 }
 

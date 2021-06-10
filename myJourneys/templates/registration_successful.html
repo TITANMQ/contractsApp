@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <title>Register successful</title>
+
+    <link
+            rel="canonical"
+            href="https://getbootstrap.com/docs/5.0/examples/sign-in/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+            crossorigin="anonymous"
+    />
+
+    <!-- custom css -->
+    {% load static %}
+    <link href="{% static 'myJourneys/register.css' %}" rel="stylesheet"/>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+
+    </style>
+</head>
+
+<body>
+<div class="reg-main">
+    <div class="reg-main-content">
+
+        <main class="form-register">
+            <img class="responsive" src="{% static 'myJourneys/suber_2.png' %}" alt="">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Account created successfully!</h4>
+                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit
+                    longer
+                    so that you can see how spacing within an alert works with this kind of content.</p>
+                <hr>
+                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+            </div>
+
+            <a href="/myJourneys/dashboard" class="w-100 btn btn-lg go-to-dashboard">Go to your Dashboard</a>
+
+        </main>
+    </div>
+</div>
+</body>
+</html>

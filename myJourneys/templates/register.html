@@ -1,17 +1,18 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <title>Register</title>
 
-<!-- Bootstrap core CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-<!-- custom css -->
-{% load static %}
-<link href="{% static 'myJourneys/register.css' %}" rel="stylesheet">
+    <!-- custom css -->
+    {% load static %}
+    <link href="{% static 'myJourneys/register.css' %}" rel="stylesheet">
 
 
     <style>
@@ -28,78 +29,84 @@
           font-size: 3.5rem;
         }
       }
+
+
+
     </style>
 
-    
-  </head>   
-  <body class="text-center">
-    
-    <main class="form-register">
-		<form action='/myJourneys/register' method="POST">
 
-			{% csrf_token %}
-		   
-		
-			<img class="mb-4" src="{% static 'myJourneys/suber-logo.png' %}" alt="" width="72" height="57">
-			<h1 class="h3 mb-3 fw-normal">Register</h1>
-		
-			<div class="row g-2">
-				<div class="col-md">
-					<div class="form-floating">
-		
-						{{ form.first_name }}
-						<label for="{{ form.first_name.id_for_label }}">First name</label>
-						
-						
-					</div>
-				</div>
-		
-				<div class="col-md">
-					<div class="form-floating">
-						{{ form.last_name }}
-						<label for="{{ form.last_name.id_for_label }}">Last name</label>
-					</div>
-				</div>
-		
-				<div>
-					<div class="form-floating">
-						{{ form.email }}
-						<label for="{{ form.email.id_for_label }}">Email address</label>
-					</div>
-					<div class="form-floating">
-		
-						{{ form.phone }}
-						<!-- pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" -->
-						<label for="{{ form.phone.id_for_label }}">Phone number</label>
-					</div>
-				</div>
-				
-				 
-				  <div class="form-floating">
-					{{ form.account_type }}
-					<label for="{{ form.account_type.id_for_label }}">Account type</label>
-				  </div>
-					  
-				  <div class="form-floating">
-					{{ form.password }}
-					<label for="{{ form.password.id_for_label }}">Password</label>
-				  </div>
-			  
-				  <div class="form-floating">
-					{{ form.confirm_password }}
-					<label for="{{ form.confirm_password.id_for_label }}">Confirm password</label>
-				  </div>
-		
-				  <a class="login-link" href="/myJourneys/login">Already registered? Log in here</a>
-			  
-				  <button class="w-100 btn btn-lg register_btn" type="submit" id="register">Register</button>
-			
-			</div>
-				
-		  </form>
-	</main>
+</head>
+<body>
+<div class="reg-main">
+    <div class="reg-main-content">
+
+        <main class="form-register">
+            <form action='/myJourneys/register' method="POST">
+
+                {% csrf_token %}
 
 
-    
-  </body>
+                <img src="{% static 'myJourneys/suber_2.png' %}" alt="" class="responsive">
+                <h1 class="h3 mb-3 fw-normal">Register</h1>
+
+                <div class="row g-2">
+                    <div class="col-md">
+                        <div class="form-floating">
+
+                            {{ form.first_name }}
+                            <label for="{{ form.first_name.id_for_label }}">First name</label>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="form-floating">
+                            {{ form.last_name }}
+                            <label for="{{ form.last_name.id_for_label }}">Last name</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="form-floating">
+                            {{ form.email }}
+                            <label for="{{ form.email.id_for_label }}">Email address</label>
+                        </div>
+                        <div class="form-floating">
+
+                            {{ form.phone }}
+                            <!-- pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" -->
+                            <label for="{{ form.phone.id_for_label }}">Phone number</label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-floating">
+                        {{ form.account_type }}
+                        <label for="{{ form.account_type.id_for_label }}">Account type</label>
+                    </div>
+
+                    <div class="form-floating">
+                        {{ form.password }}
+                        <label for="{{ form.password.id_for_label }}">Password</label>
+                    </div>
+
+                    <div class="form-floating">
+                        {{ form.confirm_password }}
+                        <label for="{{ form.confirm_password.id_for_label }}">Confirm password</label>
+                    </div>
+
+                    <a class="login-link" href="/myJourneys/login">Already registered? Log in here</a>
+
+                    <button class="w-100 btn btn-lg register_btn" type="submit" id="register">Register</button>
+
+                </div>
+
+            </form>
+        </main>
+    </div>
+</div>
+
+
+</body>
 </html>
