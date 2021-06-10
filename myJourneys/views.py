@@ -1,6 +1,7 @@
 from django.http.response import HttpResponse, HttpResponsePermanentRedirect
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from .models import Customer, Vehicle, CarChoice
 from .forms import RegisterForm
 
 
@@ -50,11 +51,22 @@ def register(request):
             email = form.cleaned_data['email']
             account_type = form.cleaned_data['account_type']
 
-            print(first_name, last_name, email, account_type)
-            if account_type == 'DRIVER':
-                return HttpResponseRedirect('/myJourneys/register/driver')
+            password = form.cleaned_data['password']
+            confirm_password = form.cleaned_data['confirm_password']
 
-            return HttpResponseRedirect('/myJourneys/register/successful')
+            if password == confirm_password:
+                print(first_name, last_name, email, account_type)
+
+                
+                if account_type == 'DRIVER':
+                    return HttpResponseRedirect('/myJourneys/register/driver')
+                else:
+                    cust = Customer(username='test2',  first_name = first_name, last_name=last_name, email_address=email, password=password)
+                    # cust.save()
+                    print(Customer.objects.get(user_id=1).first_name)
+                    return HttpResponseRedirect('/myJourneys/register/successful')
+
+                return
         else:
             print(form.errors)
     # if a GET (or any other method) we'll create a blank form
