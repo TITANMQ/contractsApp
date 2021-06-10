@@ -9,12 +9,12 @@ body {
 
 .main-content{
     background-color: #c7cbff;
-    width:100%; 
+    width:100%;
 }
 
 .inner-main{
     border-radius: 5px;
-    width: 100%;
+    width: 80%;
     background-color: #c7cbff;
     float: right;
     padding: 10px;
