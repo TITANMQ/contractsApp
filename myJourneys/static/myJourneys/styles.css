@@ -1,10 +1,10 @@
 html *
 {
    color: #000 !important;
-   font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; !important;
+   font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif !important;
 }
 body {
-   background-color: #f8f9fa; #light grey
+   background-color: #f8f9fa;
 }
 
 .main-content{
@@ -37,7 +37,7 @@ body {
     padding_bottom: 30px;
     border-style: solid;
     border-width: 4px;
-    border-color: #FFFFFF; #white
+    border-color: #FFFFFF;
 }
 
 .inner-main-left-past-book{
@@ -47,7 +47,7 @@ body {
     padding: 5px;
     border-style: solid;
     border-width: 4px;
-    border-color: #FFFFFF; #white
+    border-color: #FFFFFF;
 }
 
 .inner-main-right{
@@ -65,7 +65,7 @@ body {
     padding: 5px;
     border-style: solid;
     border-width: 4px;
-    border-color: #FFFFFF; #white
+    border-color: #FFFFFF;
 }
 
 .header-main{

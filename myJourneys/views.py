@@ -62,7 +62,7 @@ def register(request):
                     return HttpResponseRedirect('/myJourneys/register/driver')
                 else:
                     cust = Customer(username='test2',  first_name = first_name, last_name=last_name, email_address=email, password=password)
-                    # cust.save()
+                    cust.save()
                     print(Customer.objects.get(user_id=1).first_name)
                     return HttpResponseRedirect('/myJourneys/register/successful')
 
