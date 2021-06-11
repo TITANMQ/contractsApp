@@ -50,7 +50,7 @@
 
         <main class="form-register">
 
-            <form action='/myJourneys/register' method="POST">
+            <form action='/myJourneys/register/driver' method="POST">
 
                 {% csrf_token %}
 
@@ -61,28 +61,32 @@
                 <div class="row g-2">
                     <div class="form-floating">
 
-                        <select class="form-select" id="vehicle_type" required>
+                        <!-- <select class="form-select" id="vehicle_type" required>
                             <option selected value="TUK-TUK">Tuk-tuk</option>
                             <option value="MINI-VAN">Mini van</option>
                             <option value="SPORT-UTILITY VEHICLE">Sport-Utility Vehicle (SUV)</option>
                             <option value="CONVERTIBLE">Convertible</option>
                             <option value="COUPE">Coupe</option>
 
-                        </select>
-                        <label for="vehicle_type">Vehicle type</label>
+                        </select> -->
+
+                        {{ form.vehicle_type }}
+                        <label for="{{ form.vehicle_type.id_for_label }}">Vehicle type</label>
+                    </div>
+
+                    <div class="form-floating">
+                        
+                        <!-- <input type="number" class="form-control" id="capacity" placeholder="Capacity" required> -->
+                        {{ form.capacity }}
+                        <label for="{{ form.capacity.id_for_label }}">Capacity</label>
                     </div>
 
                     <div class="form-floating">
 
-                        <input type="number" class="form-control" id="capacity" placeholder="Capacity" required>
-                        <label for="capacity">Capacity</label>
-                    </div>
-
-                    <div class="form-floating">
-
-                        <input type="text" class="form-control" id="license_plate" placeholder="License plate code"
-                               required>
-                        <label for="license_plate">License Plate Code</label>
+                        <!-- <input type="text" class="form-control" id="license_plate" placeholder="License plate code"
+                               required> -->
+                         {{ form.license_plate }}
+                        <label for="{{ form.license_plate.id_for_label }}">License Plate Code</label>
 
                     </div>
 
