@@ -56,8 +56,8 @@ class Location(models.Model):
 
 class Bookings(models.Model):
     booking_id = models.AutoField(primary_key=True)
-    pick_up_loc = models.ForeignKey(Location, related_name='pu_loc', on_delete=models.CASCADE)
-    drop_off_loc = models.ForeignKey(Location, related_name='do_loc', on_delete=models.CASCADE)
+    pick_up = models.CharField(max_length=100)
+    drop_off = models.CharField(max_length=100)
     date = models.DateField(default=timezone.now)
     time = models.TimeField(default=timezone.now)
     assigned_driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
