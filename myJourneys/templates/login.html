@@ -1,10 +1,98 @@
-<!DOCTYPE html>
+{% load i18n %}
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>{% translate "Login" %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- custom css -->
+    {% load static %}
+    <link href="{% static 'myJourneys/register.css' %}" rel="stylesheet">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+
+
+    </style>
+
+
 </head>
 <body>
+<div class="reg-main" >
+    <div class="reg-main-content">
+
+        <main class="form-register">
+
+            {% get_current_language as LANGUAGE_CODE %}
+            
+            <form action='login' method="POST">
+
+                {% csrf_token %}
+
+
+                <img src="{% static 'myJourneys/suber_2.png' %}" alt="" class="responsive">
+                <h1 class="h3 mb-3 fw-normal">{% translate "Login" %}</h1>
+                
+                <div class="row g-2">
+                    
+                    
+                    <div class="form-floating">
+                        {{ form.username }}
+                        <label for="{{ form.username.id_for_label }}">{% translate "Username" %}</label>
+                    </div>
+                   
+
+                
+                    <div class="form-floating">
+                        {{ form.password }}
+                        <label for="{{ form.password.id_for_label }}">{% translate "Password" %} </label>
+                    </div>
+
+            
+                    <a class="login-link" href="register">{% translate "Not registered? Create an account here" %} </a>
+
+                    <button class="w-100 btn btn-lg register_btn" type="submit" id="login">{% translate "Login" %}</button>
+
+                </div>
+
+            </form>
+            <div class="btn-group languages">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% translate "Language" %}
+                </button>
+                <ul class="dropdown-menu">
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+        
+                    {% for lang in languages %}
+                        <li><a class="dropdown-item" href="/{{lang.code}}/myJourneys/login">{{ lang.name_local }} ({{ lang.code }})</a></li>
+                    {% endfor %}
+                </ul>
+             </div>
+        </main>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 </body>
 </html>

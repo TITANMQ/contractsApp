@@ -1,10 +1,11 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
-    <title>Register successful</title>
+    <title>{% translate "Register successful" %}</title>
 
     <link
             rel="canonical"
@@ -49,7 +50,7 @@
         <main class="form-register">
             <img class="responsive" src="{% static 'myJourneys/suber_2.png' %}" alt="">
             <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Account created successfully!</h4>
+                <h4 class="alert-heading">{% translate "Account created successfully!" %}</h4>
                 <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit
                     longer
                     so that you can see how spacing within an alert works with this kind of content.</p>
@@ -57,7 +58,7 @@
                 <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
             </div>
 
-            <a href="/myJourneys/{{ account_type }}/dashboard" class="w-100 btn btn-lg go-to-dashboard">Go to your Dashboard</a>
+            <a href="/myJourneys/{{ account_type }}/dashboard" class="w-100 btn btn-lg go-to-dashboard">{% translate "Go to your Dashboard" %}</a>
 
         </main>
     </div>

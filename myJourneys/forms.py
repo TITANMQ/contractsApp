@@ -1,8 +1,8 @@
 from django import forms
+from django.utils.translation import gettext as _
 
 ACCOUNT_TYPES = (
-    ('USER','User'), ('DRIVER','Driver')
-    )
+    ('USER', _('User') ), ('DRIVER', _('Driver') ))
 
 class RegisterForm(forms.Form):
     first_name = forms.CharField(label='first_name', max_length=100, required=True)
@@ -12,7 +12,7 @@ class RegisterForm(forms.Form):
     last_name.widget.attrs.update({'class': 'form-control', 'placeholder':'Last name'})
 
     username = forms.CharField(label='username', max_length=100, required=True)
-    username.widget.attrs.update({'class': 'form-control', 'placeholder':'Usern'})
+    username.widget.attrs.update({'class': 'form-control', 'placeholder':'Username'})
 
     email = forms.EmailField(label='email')
     email.widget.attrs.update({'class': 'form-control', 'placeholder':'Email'})
@@ -20,9 +20,6 @@ class RegisterForm(forms.Form):
     phone = forms.CharField(label='phone_number')
     phone.widget.attrs.update({'class': 'form-control', 'placeholder':'Phone number'})
 
-    # label='account_type'
-
-  
     account_type = forms.ChoiceField(label='account_type', choices= ACCOUNT_TYPES, required=True)
     account_type.widget.attrs.update({'class': 'form-control'})
 
@@ -49,3 +46,11 @@ class DriverRegisterForm(forms.Form):
 
     license_plate = forms.CharField(label='license_plate', max_length=7, required=True)
     license_plate.widget.attrs.update({'class': 'form-control', 'placeholder':'License Plate Code'}) 
+
+class LoginForm(forms.Form):
+
+    username = forms.CharField(label='username', max_length=100, required=True)
+    username.widget.attrs.update({'class': 'form-control', 'placeholder':'Username'})
+
+    password = forms.CharField(label='password', max_length=100, widget=forms.PasswordInput, required=True)
+    password.widget.attrs.update({'class': 'form-control', 'placeholder':'Password'})

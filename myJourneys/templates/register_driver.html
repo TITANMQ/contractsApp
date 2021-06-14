@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,8 +39,6 @@
         }
       }
 
-
-
     </style>
 </head>
 
@@ -56,7 +55,7 @@
 
 
                 <img class="responsive" src="{% static 'myJourneys/suber_2.png' %}" alt="">
-                <h1 class="h3 mb-3 fw-normal">Add a vehicle</h1>
+                <h1 class="h3 mb-3 fw-normal">{% translate "Add a vehicle" %}</h1>
 
                 <div class="row g-2">
                     <div class="form-floating">
@@ -71,14 +70,14 @@
                         </select> -->
 
                         {{ form.vehicle_type }}
-                        <label for="{{ form.vehicle_type.id_for_label }}">Vehicle type</label>
+                        <label for="{{ form.vehicle_type.id_for_label }}">{% translate "Vehicle type" %}</label>
                     </div>
 
                     <div class="form-floating">
                         
                         <!-- <input type="number" class="form-control" id="capacity" placeholder="Capacity" required> -->
                         {{ form.capacity }}
-                        <label for="{{ form.capacity.id_for_label }}">Capacity</label>
+                        <label for="{{ form.capacity.id_for_label }}">{% translate "Capacity" %}</label>
                     </div>
 
                     <div class="form-floating">
@@ -86,11 +85,11 @@
                         <!-- <input type="text" class="form-control" id="license_plate" placeholder="License plate code"
                                required> -->
                          {{ form.license_plate }}
-                        <label for="{{ form.license_plate.id_for_label }}">License Plate Code</label>
+                        <label for="{{ form.license_plate.id_for_label }}">{% translate "License Plate Code" %}</label>
 
                     </div>
 
-                    <button class="w-100 btn btn-lg register_btn" type="Add" id="register">Add vehicle</button>
+                    <button class="w-100 btn btn-lg register_btn" type="Add" id="register">{% translate "Add vehicle" %}</button>
                 </div>
 
             </form>

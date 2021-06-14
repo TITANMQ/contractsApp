@@ -12,4 +12,5 @@ urlpatterns = [
     path('register', views.register, name='register' ),
     path('register/driver', views.register_driver, name='register_driver' ),
     path('register/successful', views.register_success, name='register_success' ),
+    path('login', views.login, name='login' ),
 ]

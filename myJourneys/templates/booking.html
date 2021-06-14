@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    {% load static %}
+    <link href="{% static 'myJourneys/bookings.css' %}" rel="stylesheet">
+    <title>Hello, world!</title>
+</head>
+<body>
+
+<header class="header-main">
+    <div class="header-main-content">
+        <nav class="navbar navbar-expand-lg py-3 navbar-dark">
+            <div class="container">
+                <a href="#" class="navbar-brand">
+                    <!-- Logo Image -->
+                    <!-- Logo Text -->
+                </a>
+                <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                        class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+                <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item active"><a href="#" class="nav-link">Dashboard</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Bookings</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <a href="">
+                            <img src="{% static 'myJourneys/suber_2.png' %}" alt="logo" class="responsive-logo"/>
+                        </a>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Settings</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="acc-main">
+    <div class="acc-main-content">
+        
+        <div style="width: 80%; margin-left:5%;">
+            <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+            </iframe>
+        </div>
+        <div class="inner-main-account" style="margin-right: 5%;">
+            <h1 class="h3 mb-3 fw-normal">Booking #0001</h1>
+            <small>Status: waiting</small>
+            <p class="mb-1">Date: 08/06/2021 19:11</p>
+            <p class="mb-1">Driver: Santos</p>
+            <p><small>Fee: $69.00</small></p>
+            <button type="button" class="btn btn-danger">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+-->
+</body>
+</html>

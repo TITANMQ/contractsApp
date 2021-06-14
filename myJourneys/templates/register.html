@@ -1,10 +1,11 @@
+{% load i18n %}
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>Register</title>
+    <title>{% translate "Register" %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -37,24 +38,27 @@
 
 </head>
 <body>
-<div class="reg-main">
+<div class="reg-main" >
     <div class="reg-main-content">
 
         <main class="form-register">
-            <form action='/myJourneys/register' method="POST">
+
+            {% get_current_language as LANGUAGE_CODE %}
+            
+            <form action='register' method="POST">
 
                 {% csrf_token %}
 
 
                 <img src="{% static 'myJourneys/suber_2.png' %}" alt="" class="responsive">
-                <h1 class="h3 mb-3 fw-normal">Register</h1>
-
+                <h1 class="h3 mb-3 fw-normal">{% translate "Register" %}</h1>
+                
                 <div class="row g-2">
                     <div class="col-md">
                         <div class="form-floating">
 
                             {{ form.first_name }}
-                            <label for="{{ form.first_name.id_for_label }}">First name</label>
+                            <label for="{{ form.first_name.id_for_label }}">{% translate "First name" %}</label>
 
 
                         </div>
@@ -63,56 +67,69 @@
                     <div class="col-md">
                         <div class="form-floating">
                             {{ form.last_name }}
-                            <label for="{{ form.last_name.id_for_label }}">Last name</label>
+                            <label for="{{ form.last_name.id_for_label }}">{% translate "Last name" %}</label>
                         </div>
                     </div>
                     
                     <div class="form-floating">
                         {{ form.username }}
-                        <label for="{{ form.username.id_for_label }}">Username</label>
+                        <label for="{{ form.username.id_for_label }}">{% translate "Username" %}</label>
                     </div>
                    
 
                     <div>
                         <div class="form-floating">
                             {{ form.email }}
-                            <label for="{{ form.email.id_for_label }}">Email address</label>
+                            <label for="{{ form.email.id_for_label }}"> {% translate "Email address" %}</label>
                         </div>
                         <div class="form-floating">
 
                             {{ form.phone }}
                             <!-- pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" -->
-                            <label for="{{ form.phone.id_for_label }}">Phone number</label>
+                            <label for="{{ form.phone.id_for_label }}">{% translate "Phone number" %}</label>
                         </div>
                     </div>
 
 
                     <div class="form-floating">
                         {{ form.account_type }}
-                        <label for="{{ form.account_type.id_for_label }}">Account type</label>
+                        <label for="{{ form.account_type.id_for_label }}"> {% translate "Account type" %}</label>
                     </div>
 
                     <div class="form-floating">
                         {{ form.password }}
-                        <label for="{{ form.password.id_for_label }}">Password</label>
+                        <label for="{{ form.password.id_for_label }}">{% translate "Password" %} </label>
                     </div>
 
                     <div class="form-floating">
                         {{ form.confirm_password }}
-                        <label for="{{ form.confirm_password.id_for_label }}">Confirm password</label>
+                        <label for="{{ form.confirm_password.id_for_label }}">{% translate "Confirm password" %}</label>
                     </div>
 
-                    <a class="login-link" href="/myJourneys/login">Already registered? Log in here</a>
+                    <a class="login-link" href="login">{% translate "Already registered? Log in here" %} </a>
 
-                    <button class="w-100 btn btn-lg register_btn" type="submit" id="register">Register</button>
+                    <button class="w-100 btn btn-lg register_btn" type="submit" id="register">{% translate "Register" %}</button>
 
                 </div>
 
             </form>
+            <div class="btn-group languages">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% translate "Language" %}
+                </button>
+                <ul class="dropdown-menu">
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+        
+                    {% for lang in languages %}
+                        <li><a class="dropdown-item" href="/{{lang.code}}/myJourneys/register">{{ lang.name_local }} ({{ lang.code }})</a></li>
+                    {% endfor %}
+                </ul>
+             </div>
         </main>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -1,0 +1,133 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: .\myJourneys\views.py:194
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-14 16:41+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\contractsApp\_settings.py:126 .\contractsApp\settings.py:127
+msgid "English"
+msgstr ""
+
+#: .\contractsApp\_settings.py:127 .\contractsApp\settings.py:128
+msgid "Spanish"
+msgstr ""
+
+#: .\contractsApp\_settings.py:128 .\contractsApp\settings.py:129
+msgid "Portuguese"
+msgstr ""
+
+#: .\myJourneys\forms.py:5
+msgid "User"
+msgstr "usuario"
+
+#: .\myJourneys\forms.py:5
+msgid "Driver"
+msgstr "Conductor"
+
+#: .\myJourneys\templates\index.html:29
+msgid "Enter"
+msgstr "Entrar"
+
+#: .\myJourneys\templates\login.html:8 .\myJourneys\templates\login.html:54
+#: .\myJourneys\templates\login.html:74
+msgid "Login"
+msgstr "Acceso"
+
+#: .\myJourneys\templates\login.html:61 .\myJourneys\templates\register.html:76
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: .\myJourneys\templates\login.html:68
+#: .\myJourneys\templates\register.html:101
+msgid "Password"
+msgstr "Contraseña"
+
+#: .\myJourneys\templates\login.html:72
+msgid "Not registered? Create an account here"
+msgstr "¿No registrado? Crea una cuenta aqui"
+
+#: .\myJourneys\templates\login.html:81
+#: .\myJourneys\templates\register.html:118
+msgid "Language"
+msgstr ""
+
+#: .\myJourneys\templates\register.html:8
+#: .\myJourneys\templates\register.html:54
+#: .\myJourneys\templates\register.html:111
+msgid "Register"
+msgstr "Registrarse"
+
+#: .\myJourneys\templates\register.html:61
+msgid "First name"
+msgstr "Nombre propio"
+
+#: .\myJourneys\templates\register.html:70
+msgid "Last name"
+msgstr "Apellido"
+
+#: .\myJourneys\templates\register.html:83
+msgid "Email address"
+msgstr "Dirección de correo electrónico"
+
+#: .\myJourneys\templates\register.html:89
+msgid "Phone number"
+msgstr "Número de teléfono"
+
+#: .\myJourneys\templates\register.html:96
+msgid "Account type"
+msgstr "Tipo de cuenta"
+
+#: .\myJourneys\templates\register.html:106
+msgid "Confirm password"
+msgstr "Confirmar Contraseña"
+
+#: .\myJourneys\templates\register.html:109
+msgid "Already registered? Log in here"
+msgstr "¿Ya registrado? Entre aquí"
+
+#: .\myJourneys\templates\register_driver.html:58
+msgid "Add a vehicle"
+msgstr "Agregar un vehículo"
+
+#: .\myJourneys\templates\register_driver.html:73
+msgid "Vehicle type"
+msgstr "Tipo de vehiculo"
+
+#: .\myJourneys\templates\register_driver.html:80
+msgid "Capacity"
+msgstr "Capacidad"
+
+#: .\myJourneys\templates\register_driver.html:88
+msgid "License Plate Code"
+msgstr "Código de matrícula"
+
+#: .\myJourneys\templates\register_driver.html:92
+msgid "Add vehicle"
+msgstr "Agregar vehículo"
+
+#: .\myJourneys\templates\registration_successful.html:8
+msgid "Register successful"
+msgstr "Registro exitoso"
+
+#: .\myJourneys\templates\registration_successful.html:53
+msgid "Account created successfully!"
+msgstr "Cuenta creada con éxito!"
+
+#: .\myJourneys\templates\registration_successful.html:61
+msgid "Go to your Dashboard"
+msgstr "Ve a tu Panel de control"

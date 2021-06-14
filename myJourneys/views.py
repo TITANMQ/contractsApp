@@ -1,8 +1,11 @@
 from django.http.response import HttpResponse, HttpResponsePermanentRedirect
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.utils.translation import gettext as _
+from django.utils.translation import get_language, activate
 from .models import Customer, Driver, Vehicle, CarChoice, User
-from .forms import DriverRegisterForm, RegisterForm
+from .forms import DriverRegisterForm, RegisterForm, LoginForm
+import random
 
 
 # Create your views here.
@@ -76,11 +79,13 @@ def register(request):
 
                     driver = Driver(username=username,  first_name = first_name, last_name=last_name, email_address=email, password=password)
                     vehicle = Vehicle()
+                    vehicle.license_plate_number = random.randrange(100000)
                     vehicle.save()
                     driver.vehicle = vehicle
                     driver.save()
                     request.session['user_id'] = driver.user_id 
-                    return HttpResponseRedirect('/myJourneys/register/driver')
+                   
+                    return HttpResponseRedirect('register/driver')
                 else:
                     cust = Customer(username=username,  first_name = first_name, last_name=last_name, email_address=email, password=password)
                     cust.save()
@@ -91,8 +96,8 @@ def register(request):
                     else:
 
                         print('database error')
-    
-                    return HttpResponsePermanentRedirect('/myJourneys/register/successful')
+                    print(request.LANGUAGE_CODE)
+                    return HttpResponsePermanentRedirect('register/successful')
 
                 return
         else:
@@ -128,7 +133,7 @@ def register_driver(request):
 
             vehicle.save()
             
-            return HttpResponseRedirect('/myJourneys/register/successful')
+            return HttpResponseRedirect('register/successful')
             
     
     else:
@@ -148,3 +153,47 @@ def register_success(request):
 
 def index_redirect(request):
     return HttpResponsePermanentRedirect('/myJourneys/')
+
+def login(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = LoginForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+          
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            usr = User.objects.get(username=username)
+
+            if usr.password == password:
+                
+                if Customer.objects.filter(user_id= usr.user_id).count() > 0:
+                    request.session['user_id'] = usr.user_id 
+
+                    return HttpResponsePermanentRedirect('user/dashboard')
+                    
+                else:
+                    request.session['user_id'] = usr.user_id
+
+                    return HttpResponsePermanentRedirect('driver/dashboard')
+
+                return
+        else:
+            print(form.errors)
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = LoginForm()
+
+    return render(request, 'login.html', {'form': form})
+
+
+def translate(language):
+    current_language = get_language()
+    try: 
+        activate(language)
+        text = _('')
+    finally:
+        activate(current_language)
+    

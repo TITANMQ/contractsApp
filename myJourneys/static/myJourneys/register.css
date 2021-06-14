@@ -9,6 +9,11 @@ html *
 body {
     background-color: #f5f5f5;
  }
+ 
+.languages{
+  position: fixed;
+  right: 70%;
+}
   
   .form-register {
     width: 100%;
