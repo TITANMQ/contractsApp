@@ -45,7 +45,7 @@ class Customer(User):
 
 
 class Driver(User):
-    vehicle = models.CharField(Vehicle, max_length=100)
+    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
 
 
 class Location(models.Model):

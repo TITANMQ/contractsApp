@@ -11,6 +11,9 @@ class RegisterForm(forms.Form):
     last_name = forms.CharField(label='last_name', max_length=100, required=True)
     last_name.widget.attrs.update({'class': 'form-control', 'placeholder':'Last name'})
 
+    username = forms.CharField(label='username', max_length=100, required=True)
+    username.widget.attrs.update({'class': 'form-control', 'placeholder':'Usern'})
+
     email = forms.EmailField(label='email')
     email.widget.attrs.update({'class': 'form-control', 'placeholder':'Email'})
 
@@ -19,6 +22,7 @@ class RegisterForm(forms.Form):
 
     # label='account_type'
 
+  
     account_type = forms.ChoiceField(label='account_type', choices= ACCOUNT_TYPES, required=True)
     account_type.widget.attrs.update({'class': 'form-control'})
 
@@ -27,3 +31,21 @@ class RegisterForm(forms.Form):
 
     confirm_password = forms.CharField(label='confirm_password', max_length=100, widget=forms.PasswordInput, required=True)
     confirm_password.widget.attrs.update({'class': 'form-control', 'placeholder':'Confirm password'})   
+
+VEHICLE_TYPES = (
+    ('TUK-TUK','Tuk-tuk'), 
+    ('MINI-VAN','Mini van'), 
+    ('SPORT-UTILITY VEHICLE','Sport-Utility Vehicle (SUV)'),
+    ('CONVERTIBLE','Convertible'), 
+    ('COUPE','Coupe')
+)
+class DriverRegisterForm(forms.Form):
+
+    vehicle_type = forms.ChoiceField(label='vehicle_type', choices= VEHICLE_TYPES,required=True)
+    vehicle_type.widget.attrs.update({'class':'form-control', 'placeholder':'Vehicle type'})
+
+    capacity = forms.IntegerField(label='capacity', max_value=99, required=True)
+    capacity.widget.attrs.update({'class': 'form-control', 'placeholder':'Capacity'})
+
+    license_plate = forms.CharField(label='license_plate', max_length=7, required=True)
+    license_plate.widget.attrs.update({'class': 'form-control', 'placeholder':'License Plate Code'}) 

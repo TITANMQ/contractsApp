@@ -1,8 +1,4 @@
-html *
-{
-   color: #000 !important;
-   font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif !important;
-}
+
 body {
    background-color: #f8f9fa;
 }
@@ -14,7 +10,7 @@ body {
 
 .inner-main{
     border-radius: 5px;
-    width: 80%;
+    width: 100%;
     background-color: #c7cbff;
     float: right;
     padding: 10px;
@@ -26,7 +22,6 @@ body {
     background-color: #e6e7ff;
     padding: 10px;
     float: left;
-
 }
 
 .inner-main-left-curr-book{
