@@ -66,39 +66,42 @@
 <div class="acc-main">
     <div class="acc-main-content">
         <div class="inner-main-account">
-            <form>
+            <form action="/myJourneys/bookings" method="POST">
+
+                 {% csrf_token %}
+
                 <h1 class="h3 mb-3 fw-normal">Booking</h1>
 
                 <div class="row g-2">
                     <div class="col-md">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="pick_up" placeholder="Pick Up Location">
-                            <label for="pick_up">Pick Up Location</label>
+                            {{ form.pick_up }}
+                            <label for="{{ form.pick_up.id_for_label }}">Pick Up Location</label>
                         </div>
 
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="drop_off" placeholder="Drop Off Location">
-                            <label for="drop_off">Drop Off Location</label>
+                            {{ form.drop_off }}
+                            <label for="{{ form.drop_off.id_for_label }}">Drop Off Location</label>
                         </div>
                     </div>
 
                     <div class="form-floating">
-                        <input type="date" class="form-control" id="date" placeholder="dd/mm/yyyy">
-                        <label for="date">Date</label>
+                        {{ form.date }}
+                        <label for="{{ form.date.id_for_label }}">Date</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="time" class="form-control" id="time" placeholder="hh/mm" p>
-                        <label for="time">Time</label>
+                        {{ form.time }}
+                        <label for="{{ form.time.id_for_label }}">Time</label>
                     </div>
 
 
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="notes" placeholder="Notes">
-                        <label for="notes">Notes</label>
+                        {{ form.notes }}
+                        <label for="{{ form.notes.id_for_label }}">Notes</label>
                     </div>
 
-                    <button class="w-100 btn btn-lg book_btn" type="submit">Book</button>
+                    <button class="w-100 btn btn-lg book_btn" type="submit" id="bookings">Book</button>
 
                 </div>
 

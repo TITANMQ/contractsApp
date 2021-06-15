@@ -3,8 +3,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.utils.translation import get_language, activate
-from .models import Customer, Driver, Vehicle, CarChoice, User
-from .forms import DriverRegisterForm, RegisterForm, LoginForm
+from .models import Customer, Driver, Vehicle, CarChoice, User, Bookings
+from .forms import DriverRegisterForm, RegisterForm, LoginForm, BookingForm
 import random
 
 
@@ -13,7 +13,6 @@ def index(request):
     context = {
 
     }
-
 
     driver = Driver.objects.get(user_id= 2)
 
@@ -49,9 +48,28 @@ def account(request):
 
 
 def bookings(request):
-    context = {}
 
-    return render(request, 'bookings.html', context=context)
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            pick_up = form.cleaned_data['pick_up']
+            drop_off = form.cleaned_data['drop_off']
+            date = form.cleaned_data['date']
+            time = form.cleaned_data['time']
+            notes = form.cleaned_data['notes']
+
+            print(pick_up, drop_off, date, time, notes)
+
+            book = Bookings(pick_up=pick_up, drop_off=drop_off, date=date, time=time, notes=notes)
+            book.save()
+            print(Bookings.objects.get(booking_id=1).pick_up)
+
+        else:
+            print(form.errors)
+    else:
+        form = BookingForm()
+
+    return render(request, 'bookings.html', {'form': form})
 
 
 def register(request):

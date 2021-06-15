@@ -27,7 +27,24 @@ class RegisterForm(forms.Form):
     password.widget.attrs.update({'class': 'form-control', 'placeholder':'Password'})
 
     confirm_password = forms.CharField(label='confirm_password', max_length=100, widget=forms.PasswordInput, required=True)
-    confirm_password.widget.attrs.update({'class': 'form-control', 'placeholder':'Confirm password'})   
+    confirm_password.widget.attrs.update({'class': 'form-control', 'placeholder':'Confirm password'})
+
+class BookingForm(forms.Form):
+    pick_up = forms.CharField(label='pick_up', max_length=100, required=True)
+    pick_up.widget.attrs.update({'class': 'form-control', 'placeholder': 'Pick Up'})
+
+    drop_off = forms.CharField(label='drop_off', max_length=100, required=True)
+    drop_off.widget.attrs.update({'class': 'form-control', 'placeholder': 'Drop Off'})
+
+    date = forms.DateField(label='date', required=True, widget=forms.DateInput())
+    date.widget.attrs.update({'class': 'form-control', 'placeholder': 'dd/mm/yyyy'})
+
+
+    time = forms.TimeField(label='time', required=True)
+    time.widget.attrs.update({'class': 'form-control', 'placeholder': 'hh:mm'})
+
+    notes = forms.CharField(label='notes', max_length=100, required=True)
+    notes.widget.attrs.update({'class': 'form-control', 'placeholder': 'Notes'})
 
 VEHICLE_TYPES = (
     ('TUK-TUK','Tuk-tuk'), 
