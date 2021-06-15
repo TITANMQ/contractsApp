@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: .\myJourneys\views.py:194
+#: .\myJourneys\views.py:196
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-14 16:41+0100\n"
+"POT-Creation-Date: 2021-06-15 01:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,8 +35,87 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: .\myJourneys\forms.py:5
+#: .\myJourneys\forms.py:5 .\myJourneys\templates\dashboard_driver.html:79
+#: .\myJourneys\templates\dashboard_driver.html:97
+#: .\myJourneys\templates\dashboard_user.html:83
+#: .\myJourneys\templates\dashboard_user.html:101
 msgid "Driver"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_driver.html:14
+#: .\myJourneys\templates\dashboard_driver.html:29
+#: .\myJourneys\templates\dashboard_user.html:14
+#: .\myJourneys\templates\dashboard_user.html:32
+msgid "Dashboard"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_driver.html:32
+#: .\myJourneys\templates\dashboard_user.html:35
+#: .\myJourneys\templates\dashboard_user.html:72
+msgid "Bookings"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_driver.html:42
+#: .\myJourneys\templates\dashboard_user.html:45
+msgid "Settings"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_driver.html:48
+#: .\myJourneys\templates\dashboard_user.html:51
+msgid "Logout"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_driver.html:68
+msgid "Jobs"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_driver.html:70
+msgid "Upcoming Jobs"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_driver.html:76
+#: .\myJourneys\templates\dashboard_driver.html:94
+#: .\myJourneys\templates\dashboard_user.html:80
+#: .\myJourneys\templates\dashboard_user.html:98
+msgid "Status"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_driver.html:78
+#: .\myJourneys\templates\dashboard_driver.html:96
+#: .\myJourneys\templates\dashboard_user.html:82
+#: .\myJourneys\templates\dashboard_user.html:100
+msgid "Date"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_driver.html:80
+#: .\myJourneys\templates\dashboard_driver.html:98
+#: .\myJourneys\templates\dashboard_user.html:84
+#: .\myJourneys\templates\dashboard_user.html:102
+msgid "Fee"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_driver.html:87
+msgid "Past Jobs"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_driver.html:110
+msgid "Available Jobs"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_user.html:74
+msgid "Current bookings"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_user.html:91
+msgid "Past bookings"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_user.html:111
+msgid "Notifications"
+msgstr ""
+
+#: .\myJourneys\templates\dashboard_user.html:115
+msgid "Your driver is nearby"
 msgstr ""
 
 #: .\myJourneys\templates\index.html:29
