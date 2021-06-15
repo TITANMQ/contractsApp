@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-15 01:22+0100\n"
+"POT-Creation-Date: 2021-06-15 01:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,16 +20,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: .\contractsApp\_settings.py:126 .\contractsApp\settings.py:127
+#: .\myJourneys\templates\account.html:102
 msgid "English"
-msgstr ""
+msgstr "Inglês"
 
 #: .\contractsApp\_settings.py:127 .\contractsApp\settings.py:128
+#: .\myJourneys\templates\account.html:101
 msgid "Spanish"
-msgstr ""
+msgstr "Espanhol"
 
 #: .\contractsApp\_settings.py:128 .\contractsApp\settings.py:129
+#: .\myJourneys\templates\account.html:100
 msgid "Portuguese"
-msgstr ""
+msgstr "Português"
 
 #: .\myJourneys\forms.py:5
 msgid "User"
@@ -42,6 +45,13 @@ msgstr "Do utilizador"
 msgid "Driver"
 msgstr "Motorista"
 
+#: .\myJourneys\templates\account.html:14
+
+msgid "Account"
+msgstr "Conta"
+
+#: .\myJourneys\templates\account.html:32
+#: .\myJourneys\templates\bookings.html:32
 #: .\myJourneys\templates\dashboard_driver.html:14
 #: .\myJourneys\templates\dashboard_driver.html:29
 #: .\myJourneys\templates\dashboard_user.html:14
@@ -49,21 +59,100 @@ msgstr "Motorista"
 msgid "Dashboard"
 msgstr "Painel"
 
+#: .\myJourneys\templates\account.html:35
+#: .\myJourneys\templates\bookings.html:14
+#: .\myJourneys\templates\bookings.html:35
 #: .\myJourneys\templates\dashboard_driver.html:32
 #: .\myJourneys\templates\dashboard_user.html:35
 #: .\myJourneys\templates\dashboard_user.html:72
 msgid "Bookings"
 msgstr "Reservas"
 
+#: .\myJourneys\templates\account.html:45
+#: .\myJourneys\templates\bookings.html:45
 #: .\myJourneys\templates\dashboard_driver.html:42
 #: .\myJourneys\templates\dashboard_user.html:45
 msgid "Settings"
 msgstr "Definições"
 
+#: .\myJourneys\templates\account.html:51
+#: .\myJourneys\templates\bookings.html:51
 #: .\myJourneys\templates\dashboard_driver.html:48
 #: .\myJourneys\templates\dashboard_user.html:51
 msgid "Logout"
 msgstr "Sair"
+
+#: .\myJourneys\templates\account.html:71
+msgid "Your Account"
+msgstr "Sua conta"
+
+#: .\myJourneys\templates\account.html:82
+#: .\myJourneys\templates\register.html:70
+msgid "Last name"
+msgstr "Sobrenome"
+
+#: .\myJourneys\templates\account.html:88
+#: .\myJourneys\templates\register.html:83
+msgid "Email address"
+msgstr "Endereço de e-mail"
+
+#: .\myJourneys\templates\account.html:94
+#: .\myJourneys\templates\register.html:89
+msgid "Phone number"
+msgstr "Número de telefone"
+
+#: .\myJourneys\templates\account.html:104 .\myJourneys\templates\login.html:81
+#: .\myJourneys\templates\register.html:118
+msgid "Language"
+msgstr "Língua"
+
+#: .\myJourneys\templates\account.html:109 .\myJourneys\templates\login.html:68
+#: .\myJourneys\templates\register.html:101
+msgid "Password"
+msgstr "Senha"
+
+#: .\myJourneys\templates\account.html:115
+#: .\myJourneys\templates\register.html:106
+msgid "Confirm password"
+msgstr "Confirme a Senha"
+
+#: .\myJourneys\templates\account.html:119
+msgid "Update"
+msgstr "Atualizar"
+
+#: .\myJourneys\templates\bookings.html:70
+msgid "Booking"
+msgstr "Reserva"
+
+#: .\myJourneys\templates\bookings.html:76
+
+msgid "Pick up address"
+msgstr "Local de coleta"
+
+#: .\myJourneys\templates\bookings.html:81
+msgid "Drop off address"
+msgstr "Local de entrega"
+
+#: .\myJourneys\templates\bookings.html:87
+#: .\myJourneys\templates\dashboard_driver.html:78
+#: .\myJourneys\templates\dashboard_driver.html:96
+#: .\myJourneys\templates\dashboard_user.html:82
+#: .\myJourneys\templates\dashboard_user.html:100
+msgid "Date"
+msgstr "Data"
+
+#: .\myJourneys\templates\bookings.html:92
+msgid "Time"
+msgstr "Tempo"
+
+#: .\myJourneys\templates\bookings.html:98
+msgid "Notes"
+msgstr "Notas"
+
+#: .\myJourneys\templates\bookings.html:101
+
+msgid "Book"
+msgstr "Reserva"
 
 #: .\myJourneys\templates\dashboard_driver.html:68
 msgid "Jobs"
@@ -79,13 +168,6 @@ msgstr "Próximos empregos"
 #: .\myJourneys\templates\dashboard_user.html:98
 msgid "Status"
 msgstr "Status"
-
-#: .\myJourneys\templates\dashboard_driver.html:78
-#: .\myJourneys\templates\dashboard_driver.html:96
-#: .\myJourneys\templates\dashboard_user.html:82
-#: .\myJourneys\templates\dashboard_user.html:100
-msgid "Date"
-msgstr "Data"
 
 #: .\myJourneys\templates\dashboard_driver.html:80
 #: .\myJourneys\templates\dashboard_driver.html:98
@@ -131,19 +213,9 @@ msgstr "Conecte-se"
 msgid "Username"
 msgstr "Nome do usuário"
 
-#: .\myJourneys\templates\login.html:68
-#: .\myJourneys\templates\register.html:101
-msgid "Password"
-msgstr "Senha"
-
 #: .\myJourneys\templates\login.html:72
 msgid "Not registered? Create an account here"
 msgstr "Não registrado? Crie uma conta aqui"
-
-#: .\myJourneys\templates\login.html:81
-#: .\myJourneys\templates\register.html:118
-msgid "Language"
-msgstr ""
 
 #: .\myJourneys\templates\register.html:8
 #: .\myJourneys\templates\register.html:54
@@ -155,25 +227,9 @@ msgstr "Registro"
 msgid "First name"
 msgstr "Primeiro nome"
 
-#: .\myJourneys\templates\register.html:70
-msgid "Last name"
-msgstr "Sobrenome"
-
-#: .\myJourneys\templates\register.html:83
-msgid "Email address"
-msgstr "Endereço de e-mail"
-
-#: .\myJourneys\templates\register.html:89
-msgid "Phone number"
-msgstr "Número de telefone"
-
 #: .\myJourneys\templates\register.html:96
 msgid "Account type"
 msgstr "Tipo de conta"
-
-#: .\myJourneys\templates\register.html:106
-msgid "Confirm password"
-msgstr "Confirme a Senha"
 
 #: .\myJourneys\templates\register.html:109
 msgid "Already registered? Log in here"
