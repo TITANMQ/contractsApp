@@ -57,10 +57,14 @@ def bookings(request):
             date = form.cleaned_data['date']
             time = form.cleaned_data['time']
             notes = form.cleaned_data['notes']
+            customer = Customer.objects.get(user_id=request.session['user_id']) 
+
+
+
 
             print(pick_up, drop_off, date, time, notes)
 
-            book = Bookings(pick_up=pick_up, drop_off=drop_off, date=date, time=time, notes=notes)
+            book = Bookings(pick_up=pick_up, drop_off=drop_off, date=date, time=time, customer=customer, notes=notes)
             book.save()
             print(Bookings.objects.get(booking_id=1).pick_up)
 

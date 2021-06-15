@@ -72,29 +72,29 @@
                     <div class="col-md">
                         <div class="form-floating">
                             {{ form.pick_up }}
-                            <label for="{{ form.pick_up.id_for_label }}">Pick Up Location</label>
+                            <label for="{{ form.pick_up.id_for_label }}">{% translate "Pick up address" %} </label>
                         </div>
 
                         <div class="form-floating">
                             {{ form.drop_off }}
-                            <label for="{{ form.drop_off.id_for_label }}">Drop Off Location</label>
+                            <label for="{{ form.drop_off.id_for_label }}">{% translate "Drop off address" %}</label>
                         </div>
                     </div>
 
                     <div class="form-floating">
                         {{ form.date }}
-                        <label for="{{ form.date.id_for_label }}">Date</label>
+                        <label for="{{ form.date.id_for_label }}">{% translate "Date" %}</label>
                     </div>
 
                     <div class="form-floating">
                         {{ form.time }}
-                        <label for="{{ form.time.id_for_label }}">Time</label>
+                        <label for="{{ form.time.id_for_label }}">{% translate "Time" %}</label>
                     </div>
 
 
                     <div class="form-floating">
                         {{ form.notes }}
-                        <label for="{{ form.notes.id_for_label }}">Notes</label>
+                        <label for="{{ form.notes.id_for_label }}">{% translate "Notes" %}</label>
                     </div>
 
                     <button class="w-100 btn btn-lg book_btn" type="submit">{% translate "Book" %}</button>

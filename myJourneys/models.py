@@ -56,12 +56,12 @@ class Location(models.Model):
 
 class Bookings(models.Model):
     booking_id = models.AutoField(primary_key=True)
-    pick_up = models.CharField(max_length=100)
-    drop_off = models.CharField(max_length=100)
+    pick_up = models.CharField(max_length=100,default="pick_up")
+    drop_off = models.CharField(max_length=100, default="drop_off")
     date = models.DateField(default=timezone.now)
     time = models.TimeField(default=timezone.now)
-    assigned_driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
+    assigned_driver = models.ForeignKey(Driver, on_delete=models.CASCADE, null=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    fee = models.DecimalField(decimal_places=2, max_digits=6)
+    fee = models.DecimalField(decimal_places=2, max_digits=6, default=0.75)
     notes = models.CharField(max_length=100)
     status = models.CharField(max_length=30)
