@@ -67,52 +67,43 @@
     <div class="acc-main-content">
         <div class="inner-main-account">
 
-            <form>
+            <form action="/myJourneys/account" method="POST">
+
+                {% csrf_token %}
                 <h1 class="h3 mb-3 fw-normal">{% translate "Your Account" %}</h1>
 
                 <div class="row g-2">
                     <div class="col-md">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="first_name" placeholder="First name">
-                            <label for="first_name">{% translate "First name" %}</label>
+                            {{ form.first_name }}
+                            <label for="{{ form.first_name.id_for_label}}">{% translate "First name" %}</label>
                         </div>
 
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="last_name" placeholder="Last name">
-                            <label for="last_name">{% translate "Last name" %}</label>
+                            {{ form.last_name}}
+                            <label for="{{ form.last_name.id_for_label}}">{% translate "Last name" %}</label>
                         </div>
                     </div>
 
                     <div class="form-floating">
-                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
-                        <label for="email">{% translate "Email address" %}</label>
+                        {{ form.email }}
+                        <label for="{{ form.email.id_for_label}}">{% translate "Email address" %}</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="tel" class="form-control" id="phone_number"
-                               pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="+(0) 000 0000000" p>
-                        <label for="phone_number">{% translate "Phone number" %}</label>
+                        {{ form.phone }}
+                        <label for="{{ form.phone.id_for_label}}">{% translate "Phone number" %}</label>
                     </div>
 
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelectGrid"
-                                aria-label="Floating label select example">
-                            <option value="portuguese">{% translate "Portuguese" %}</option>
-                            <option selected value="spanish">{% translate "Spanish" %}</option>
-                            <option value="english">{% translate "English" %}</option>
-                        </select>
-                        <label for="floatingSelectGrid">{% translate "Language" %}</label>
+                        {{ form.password }}
+                        <label for="{{ form.password.id_for_label}}">{% translate "Password" %}</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="password" placeholder="Password">
-                        <label for="password">{% translate "Password" %}</label>
-                    </div>
-
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="confirm_password"
-                               placeholder="Confirm Password">
-                        <label for="confirm_password">{% translate "Confirm password" %}</label>
+                        {{ form.confirm_password}}
+                        <label for="{{ form.confirm_password.id_for_label}}">{% translate "Confirm password" %}</label>
+                        {{form.confirm_password.errors}}
                     </div>
 
 

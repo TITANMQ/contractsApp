@@ -104,6 +104,7 @@
                     <div class="form-floating">
                         {{ form.confirm_password }}
                         <label for="{{ form.confirm_password.id_for_label }}">{% translate "Confirm password" %}</label>
+                        {{form.confirm_password.errors}}
                     </div>
 
                     <a class="login-link" href="login">{% translate "Already registered? Log in here" %} </a>

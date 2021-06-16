@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.utils.translation import get_language, activate
 from .models import Customer, Driver, Vehicle, CarChoice, User, Bookings
-from .forms import DriverRegisterForm, RegisterForm, LoginForm, BookingForm
+from .forms import DriverRegisterForm, RegisterForm, LoginForm, BookingForm, AccountForm
 import random
 
 
@@ -42,9 +42,35 @@ def dashboard_driver(request):
 
 
 def account(request):
-    context = {}
 
-    return render(request, 'account.html', context=context)
+    if request.method == 'POST':
+        form = AccountForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
+            password = form.cleaned_data['password']
+            confirm_password = form.cleaned_data['confirm_password']
+
+            customer = Customer.objects.get(user_id=request.session['user_id'])
+
+            if password == confirm_password:
+
+                customer.first_name = first_name
+                customer.last_name = last_name
+                customer.email_address = email
+                customer.phone_number = phone
+                customer.password = password
+
+                customer.save()
+                print(Customer.objects.get(user_id=1).first_name)
+        else:
+            print(form.errors)
+    else:
+        form = AccountForm()
+
+    return render(request, 'account.html', {'form': form})
 
 
 def bookings(request):
@@ -121,7 +147,8 @@ def register(request):
 
                 return
         else:
-            print(form.errors)
+            # print(form.errors)
+            print(form['confirm_password'].errors)
     # if a GET (or any other method) we'll create a blank form
     else:
         form = RegisterForm()
