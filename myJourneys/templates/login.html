@@ -16,26 +16,6 @@
     <link href="{% static 'myJourneys/register.css' %}" rel="stylesheet">
 
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-
-
-    </style>
-
-
 </head>
 <body>
 <div class="reg-main" >
@@ -51,6 +31,23 @@
 
 
                 <img src="{% static 'myJourneys/suber_2.png' %}" alt="" class="responsive">
+
+                <div class="btn-group languages">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        {% translate "Language" %}
+                    </button>
+                    <ul class="dropdown-menu">
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+
+                        {% for lang in languages %}
+                        <li><a class="dropdown-item" href="/{{lang.code}}/myJourneys/login">{{ lang.name_local }} ({{
+                            lang.code }})</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
                 <h1 class="h3 mb-3 fw-normal">{% translate "Login" %}</h1>
                 
                 <div class="row g-2">
@@ -73,23 +70,9 @@
                     <a class="login-link" href="register">{% translate "Not registered? Create an account here" %} </a>
 
                     <button class="w-100 btn btn-lg register_btn" type="submit" id="login">{% translate "Login" %}</button>
-
                 </div>
 
             </form>
-            <div class="btn-group languages">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {% translate "Language" %}
-                </button>
-                <ul class="dropdown-menu">
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
-        
-                    {% for lang in languages %}
-                        <li><a class="dropdown-item" href="/{{lang.code}}/myJourneys/login">{{ lang.name_local }} ({{ lang.code }})</a></li>
-                    {% endfor %}
-                </ul>
-             </div>
         </main>
     </div>
 </div>

@@ -73,7 +73,6 @@ body {
 .reg-main-content{
     background-color: #c7cbff;
     position: absolute;
-    top: 50%, left: 50%;
     width: 80%;
     min-height: 100vh;
     display: flex;

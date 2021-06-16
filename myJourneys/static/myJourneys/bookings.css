@@ -20,13 +20,11 @@
 
 .acc-main-content{
     background-color: #c7cbff;
-    position: absolute;
-    top: 50%, left: 50%;
     width: 80%;
     height: 100vh;
-    display: flex;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    display: flex;
 }
 
   .form-signin {
@@ -78,7 +76,6 @@
 .header-main-content{
     background-color: #c7cbff;
     position: absolute;
-    top: 50%, left: 50%;
     width: 80%;
     height: 26vh;
     display: flex;

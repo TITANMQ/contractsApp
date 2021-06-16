@@ -15,10 +15,14 @@
 </head>
 <body>
 
+
 <header class="header-main">
     <div class="header-main-content">
         <nav class="navbar navbar-expand-lg py-3 navbar-dark">
             <div class="container">
+                <a href="#" class="navbar-brand">
+
+                </a>
                 <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                         class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
@@ -26,10 +30,10 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
-                        <li class="nav-item active"><a href="#" class="nav-link">{% translate "Dashboard" %}</a></li>
+                        <li class="nav-item active"><a href="{% url 'dashboard_user'%}" class="nav-link">{% translate "Dashboard" %}</a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">{% translate "Bookings" %}</a></li>
+                        <li class="nav-item"><a href="{% url 'bookings'%}" class="nav-link">{% translate "Bookings" %}</a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
@@ -39,7 +43,7 @@
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">{% translate "Settings" %}</a></li>
+                        <li class="nav-item"><a href="{% url 'account'%}" class="nav-link">{% translate "Settings" %}</a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
@@ -60,12 +64,13 @@
     </div>
 </header>
 
+
 <div class="acc-main">
     <div class="acc-main-content">
         <div class="inner-main-account">
             <form action="/myJourneys/bookings" method="POST">
 
-                 {% csrf_token %}
+                {% csrf_token %}
                 <h1 class="h3 mb-3 fw-normal">{% translate "Booking" %}</h1>
 
                 <div class="row g-2">
