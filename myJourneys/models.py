@@ -2,10 +2,10 @@ from enum import Enum
 
 from django.db import models
 from django.utils import timezone 
+from django.utils.translation import ugettext_lazy as _
 
 
-# Create your models here.
-
+# user model for storing user data
 class User(models.Model):
     user_id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=30, default='default_user', unique=True)
@@ -18,6 +18,8 @@ class User(models.Model):
     rating = models.IntegerField(default=0)
 
 
+
+# enum for car type choices
 class CarChoice(Enum):
     TUK = "TUK-TUK"
     MINI = "MINI-VAN"
@@ -29,7 +31,13 @@ class CarChoice(Enum):
     LUX_CONV = "LUXURY CONVERTIBLE"
     LUX_COUP = "LUXURY COUPE"
 
+# enum for status type choices
+class StatusChoice(Enum):
+    ON_GOING = "Ongoing"
+    CANCELLED = "Cancelled"
+    COMPLETED = "Completed"
 
+# vehicle model for storing vehicle information
 class Vehicle(models.Model):
     vehicle_id = models.AutoField(primary_key=True)
     type = models.CharField(
@@ -39,21 +47,21 @@ class Vehicle(models.Model):
     capacity = models.IntegerField(default=0)
     license_plate_number = models.CharField(max_length=11, unique=True)
 
-
+# customer model sub class of user
 class Customer(User):
     pass
 
-
+# driver model sub class of user
 class Driver(User):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
 
-
+# location model for storing location data 
 class Location(models.Model):
     location_id = models.AutoField(primary_key=True)
     latitude = models.DecimalField(decimal_places=15, max_digits=15)
     longitude = models.DecimalField(decimal_places=15, max_digits=15)
 
-
+# booking model for storing booking details
 class Bookings(models.Model):
     booking_id = models.AutoField(primary_key=True)
     pick_up = models.CharField(max_length=100,default="pick_up")

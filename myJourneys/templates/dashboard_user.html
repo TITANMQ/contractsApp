@@ -48,7 +48,7 @@
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">{% translate "Logout" %}</a></li>
+                        <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">{% translate "Logout" %}</a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
@@ -73,35 +73,61 @@
                     <div class="inner-main-left-curr-book">
                         <h3>{% translate "Current bookings" %}</h3>
                         <div class="list-group">
+                            
 
-                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">PICKUP-DROP_OFF#0001</h5>
-                                    <small>{% translate "Status" %}: waiting</small>
-                                </div>
-                                <p class="mb-1">{% translate "Date" %}: 08/06/2021 19:11</p>
-                                <p class="mb-1">{% translate "Driver" %}: Santos</p>
-                                <small>{% translate "Fee" %}: $69.00</small>
-                            </a>
+                            {% for booking in booking_list %}
 
+                
+
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">{{ booking.pick_up }}-{{ booking.drop_off }}#{{ booking.booking_id }}</h5>
+                                            <small>{% translate "Status" %}: {{ booking.status }} </small>
+                                        </div>
+                                        <p class="mb-1">{% translate "Date" %}: {{ booking.date }} {{ booking.time }}</p>
+                                        <p class="mb-1">{% translate "Driver" %}: {% if booking.assigned_driver == None %} {{ no_driver }} {% else %} {{ booking.assigned_driver.first_name }} {% endif %}</p>
+                                        <p class="mb-1">{% translate "Notes" %}: {{ booking.notes }}</p>
+                                        
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <small>{% translate "Estimated fee" %}: ${{ booking.fee }}</small>
+                                            <form action="" method="post">
+                                                <button type="button" class="btn btn-danger" value="{{ booking.booking_id }}">{% translate "Cancel" %}</button>
+                                            </form>
+                                            
+                                        </div>
+                                           
+                                    </a>
+
+                            {% endfor %}
+                            
+                            
                         </div>
 
                     </div>
                     <div class="inner-main-left-past-book">
                         <h3>{% translate "Past bookings" %}</h3>
 
-                        <div class="list-group">
 
-                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">PICKUP-DROP_OFF#0001</h5>
-                                    <small>{% translate "Status" %}: waiting</small>
-                                </div>
-                                <p class="mb-1">{% translate "Date" %}: 08/06/2021 19:11</p>
-                                <p class="mb-1">{% translate "Driver" %}: Santos</p>
-                                <small>{% translate "Fee" %}: $69.00</small>
-                            </a>
-                        </div>
+                         {% for booking in past_booking_list %}
+
+                
+
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">{{ booking.pick_up }}-{{ booking.drop_off }}#{{ booking.booking_id }}</h5>
+                                            <small>{% translate "Status" %}: {{ booking.status }} </small>
+                                        </div>
+                                        <p class="mb-1">{% translate "Date" %}: {{ booking.date }} {{ booking.time }}</p>
+                                        <p class="mb-1">{% translate "Driver" %}: {% if booking.assigned_driver == None %} {{ no_driver }} {% else %} {{ booking.assigned_driver.first_name }} {% endif %}</p>
+                                        <p class="mb-1">{% translate "Notes" %}: {{ booking.notes }}</p>
+                                        
+                                        <small>{% translate "Estimated fee" %}: ${{ booking.fee }}</small>
+                                         
+                                           
+                                    </a>
+
+                            {% endfor %}
+
 
 
                     </div>

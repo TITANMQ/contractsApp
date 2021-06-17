@@ -1,46 +1,99 @@
 from django.http.response import HttpResponse, HttpResponsePermanentRedirect
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.translation import gettext as _
 from django.utils.translation import get_language, activate
-from .models import Customer, Driver, Vehicle, CarChoice, User, Bookings
+from django.urls import reverse
+from django.db.models import Q
+from .models import Customer, Driver, Vehicle, CarChoice, User, Bookings, StatusChoice
 from .forms import DriverRegisterForm, RegisterForm, LoginForm, BookingForm, AccountForm
 import random
 
 
-# Create your views here.
+# code for handling index(home) requests
 def index(request):
     context = {
 
     }
 
-    # # driver = Driver.objects.get(user_id= 2)
-    #
-    # print(driver.username)
-    # print(driver.vehicle.type)
-    # print(driver.vehicle.capacity)
-    # print(driver.vehicle.license_plate_number)
-
-    # vehicle = Vehicle.objects.get(vehicle_id= 1)
-    # vehicle.delete()
 
     return render(request, 'index.html', context=context)
 
-
+# code for handling the user dashboard requests
 def dashboard_user(request):
-    context = {
 
+    cust =  Customer.objects.get(user_id=request.session['user_id'])
+    bookings_list = Bookings.objects.all().filter(customer=cust, status=StatusChoice.ON_GOING.value)
+
+    print(cust.last_name)
+    
+    for booking in bookings_list:
+        if booking.assigned_driver == None:
+            print('Driver not assigned yet')
+        print(booking.booking_id)
+    past_bookings_list = Bookings.objects.all().filter(Q(customer=cust), Q(status=StatusChoice.CANCELLED.value) | Q(status =StatusChoice.COMPLETED.value))
+
+    
+    context = {
+        'booking_list': bookings_list,
+        'past_booking_list': past_bookings_list,
+        'no_driver': _('Driver not assigned yet')
     }
     return render(request, 'dashboard_user.html', context=context)
 
+# code for handling canceling booking requests
+def cancel_booking(request):
+    return
 
+# code for handling accepting booking requests
+def accept_booking(request, booking_id, driver_id):
+    
+    booking = Bookings.objects.get(booking_id=booking_id)
+
+    print('called')
+    print(booking.assigned_driver)
+    if booking.assigned_driver == None:
+        driver = Driver.objects.get(user_id =driver_id)
+        booking.assigned_driver = driver
+        booking.save()
+
+
+    return HttpResponseRedirect(reverse('dashboard_driver'))
+
+# code for handling the driver dashboard requests
+# gets drivers current bookings, past bookings and all available bookings that can be 
+#accepted
 def dashboard_driver(request):
-    context = {
 
+    print('called')
+    driver =  Driver.objects.get(user_id=request.session['user_id'])
+    print(driver.user_id)
+    available_bookings_list = Bookings.objects.all().filter(assigned_driver=None, status=StatusChoice.ON_GOING.value)
+
+    for booking in available_bookings_list:
+        print(booking.booking_id)
+            
+    past_bookings_list = Bookings.objects.all().filter(assigned_driver=driver, status=StatusChoice.COMPLETED.value)
+
+            
+    current_bookings_list = Bookings.objects.all().filter(assigned_driver=driver, status=StatusChoice.ON_GOING.value)       
+
+
+    context = {
+        # 'form': form,
+        'available_bookings_list': available_bookings_list,
+        'past_bookings_list': past_bookings_list,
+        'current_bookings_list': current_bookings_list,
+        'current_bookings_list_length': len(current_bookings_list),
+        'past_bookings_list_length': len(past_bookings_list),
+        'available_bookings_list_length': len(available_bookings_list),
+        'driver':driver
+        
     }
     return render(request, 'dashboard_driver.html', context=context)
 
-
+# code for handling the account requests which gets account infomation and 
+# allows users to update any details of their account
 def account(request):
 
     if request.method == 'POST':
@@ -53,6 +106,7 @@ def account(request):
             password = form.cleaned_data['password']
             confirm_password = form.cleaned_data['confirm_password']
 
+
             customer = Customer.objects.get(user_id=request.session['user_id'])
 
             if password == confirm_password:
@@ -64,15 +118,19 @@ def account(request):
                 customer.password = password
 
                 customer.save()
-                print(Customer.objects.get(user_id=1).first_name)
+                
         else:
             print(form.errors)
     else:
-        form = AccountForm()
+        customer = Customer.objects.get(user_id=request.session['user_id'])
+        form = AccountForm(initial={"first_name":customer.first_name, 
+        "last_name": customer.last_name, "email": customer.email_address, 
+        "phone": customer.phone_number })
+        
 
     return render(request, 'account.html', {'form': form})
 
-
+# code for handling the bookings requests which allows customers to create new bookings
 def bookings(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -82,13 +140,12 @@ def bookings(request):
             date = form.cleaned_data['date']
             time = form.cleaned_data['time']
             notes = form.cleaned_data['notes']
-            customer = Customer.objects.get(user_id=request.session['user_id'])
+            customer = Customer.objects.get(user_id=request.session['user_id']) 
+            status = StatusChoice.ON_GOING.value
 
-            print(pick_up, drop_off, date, time, notes)
 
-            book = Bookings(pick_up=pick_up, drop_off=drop_off, date=date, time=time, customer=customer, notes=notes)
+            book = Bookings(pick_up=pick_up, drop_off=drop_off, date=date, time=time, customer=customer, notes=notes, status=status)
             book.save()
-            print(Bookings.objects.get(booking_id=1).pick_up)
 
         else:
             print(form.errors)
@@ -97,7 +154,8 @@ def bookings(request):
 
     return render(request, 'bookings.html', {'form': form})
 
-
+# code for handling the register requests where users can sign up as either a driver
+# or a customer
 def register(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -155,7 +213,8 @@ def register(request):
 
     return render(request, 'register.html', {'form': form})
 
-
+# code for handling the driver register requests which is an additional step to 
+# driver register which allows new drivers to add there vehicle 
 def register_driver(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -178,15 +237,17 @@ def register_driver(request):
 
             vehicle.save()
 
+            
             return HttpResponseRedirect('successful')
-
-
+            
+    
     else:
         form = DriverRegisterForm()
 
     return render(request, 'register_driver.html', {'form': form})
 
-
+# code for handling register success requests which is a confirmation page when a 
+# users successfully creates a new account
 def register_success(request):
     account_type = request.session['account_type']  # Get the account type
 
@@ -195,14 +256,17 @@ def register_success(request):
     return render(request, 'registration_successful.html', context=context)
 
 
+# code for handling index redirect requests which redirects users from the root url
+# to the home page (index)
 def index_redirect(request):
-    return HttpResponsePermanentRedirect('/myJourneys/')
+    return HttpResponsePermanentRedirect('myJourneys/')
 
-
+# code for handling login requests which allows uses to login to their
+# accounts with a username and passord
 def login(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
+        
         form = LoginForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
@@ -216,28 +280,38 @@ def login(request):
 
                 if Customer.objects.filter(user_id=usr.user_id).count() > 0:
                     request.session['user_id'] = usr.user_id
+                    request.session.set_expiry(7200) # sets session expiry for 2 hours 
 
                     return HttpResponsePermanentRedirect('user/dashboard')
 
                 else:
                     request.session['user_id'] = usr.user_id
+                    request.session.set_expiry(7200) # sets session expiry for 2 hours 
 
                     return HttpResponsePermanentRedirect('driver/dashboard')
 
                 return
         else:
             print(form.errors)
-    # if a GET (or any other method) we'll create a blank form
+
     else:
         form = LoginForm()
 
     return render(request, 'login.html', {'form': form})
 
+def logout(request):
+    
+    print('logout')
+    request.session.flush()
 
-def translate(language):
+
+    return HttpResponseRedirect(reverse('login'))
+
+# support function for translating strings
+def translate(language, msg):
     current_language = get_language()
     try:
         activate(language)
-        text = _('')
+        text = _(msg)
     finally:
         activate(current_language)

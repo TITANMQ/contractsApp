@@ -64,7 +64,7 @@
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">{% translate "Logout" %}</a></li>
+                        <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">{% translate "Logout" %}</a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
                         <li class="nav-item"><a href="#" class="nav-link"></a></li>
@@ -92,15 +92,29 @@
                         <h3>{% translate "Upcoming Jobs" %}</h3>
                         <div class="list-group">
 
+                            {% if current_bookings_list_length == 0 %}   
+                                <h6>{% translate "You have no upcoming jobs yet" %}</h6> 
+
+                            {% endif %}
+
+                            {% for booking in current_bookings_list %}
+
+                
+
                             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">PICKUP-DROP_OFF#0001</h5>
-                                    <small>{% translate "Status" %}: waiting</small>
+                                    <h5 class="mb-1">{{ booking.pick_up }}-{{ booking.drop_off }}#{{ booking.booking_id }}</h5>
+                                    <small>{% translate "Status" %}: {{ booking.status }} </small>
                                 </div>
-                                <p class="mb-1">{% translate "Date" %}: 08/06/2021 19:11</p>
-                                <p class="mb-1">{% translate "Driver" %}: Santos</p>
-                                <small>{% translate "Fee" %}: $69.00</small>
+                                <p class="mb-1">{% translate "Date" %}: {{ booking.date }} {{ booking.time }}</p>
+                                <p class="mb-1">{% translate "Customer" %}: {{ booking.customer.first_name }}</p>
+                                <p class="mb-1">{% translate "Notes" %}: {{ booking.notes }}</p>
+                                
+                            
+                   
                             </a>
+
+                    {% endfor %}
                             
                         </div>
 
@@ -110,16 +124,29 @@
 
                         <div class="list-group">
 
-                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">PICKUP-DROP_OFF#0001</h5>
-                                    <small>{% translate "Status" %}: waiting</small>
-                                </div>
-                                <p class="mb-1">{% translate "Date" %}: 08/06/2021 19:11</p>
-                                <p class="mb-1">{% translate "Driver" %}: Santos</p>
-                                <small>{% translate "Fee" %}: $69.00</small>
+                            {% if past_bookings_list_length == 0 %}   
+                                <h6>{% translate "You have no past jobs yet" %}</h6> 
+
+                        {% endif %}
+
+                        {% for booking in past_bookings_list %}
+
+        
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ booking.pick_up }}-{{ booking.drop_off }}#{{ booking.booking_id }}</h5>
+                                <small>{% translate "Status" %}: {{ booking.status }} </small>
+                            </div>
+                            <p class="mb-1">{% translate "Date" %}: {{ booking.date }} {{ booking.time }}</p>
+                            <p class="mb-1">{% translate "Customer" %}:{{ booking.customer.first_name }}</p>
+                            <p class="mb-1">{% translate "Notes" %}: {{ booking.notes }}</p>
                             
-                            </a>
+                            <small>{% translate "Estimated fee per km" %}: ${{ booking.fee }}</small>
+           
+                               
+                        </a>
+
+                {% endfor %}
                            
                         </div>
 
@@ -132,19 +159,32 @@
                     <h2>{% translate "Available Jobs" %}</h2>
                     <div class="inner-main-right-noti">
                         <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Jonny needs to go from norwich to india
-                                <span class="badge badge-primary badge-pill">14</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Dapibus ac facilisis in
-                                <span class="badge badge-primary badge-pill">2</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
-                            </li>
-                        </ul>
+
+                            
+                            {% if available_bookings_list_length == 0 %}   
+                                <h6>{% translate "You have no jobs available" %}</h6> 
+                            {% endif %}
+
+                            {% for booking in available_bookings_list %}
+
+            
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                
+                                <h5 class="mb-1">{{ booking.pick_up }}-{{ booking.drop_off }}#{{ booking.booking_id }}</h5>
+                                    
+                              
+                                <p class="mb-1">{% translate "Date" %}: {{ booking.date }} {{ booking.time }}</p>
+                                <p class="mb-1">{% translate "Customer" %}: {{ booking.customer.first_name }}</p>
+                                <p class="mb-1">{% translate "Notes" %}: {{ booking.notes }}</p>
+                        
+                                <a class="btn btn-primary" href="{% url 'accept_booking' booking_id=booking.booking_id driver_id=driver.user_id %}" role="button">Accept</a>
+                            </a>
+
+                        {% endfor %}
+
+
+
+                          
                     </div>
                 </div>
 
@@ -155,9 +195,7 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 </body>
 </html>
